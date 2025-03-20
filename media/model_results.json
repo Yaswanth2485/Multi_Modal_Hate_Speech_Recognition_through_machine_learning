@@ -1,0 +1,1 @@
+{"svm_accuracy": 89.63207255487994, "nb_accuracy": 79.47026692775431, "svm_conf_matrix": "finalized_model_SVM_confusion_matrix.png", "nb_conf_matrix": "finalized_model_NB_confusion_matrix.png"}

@@ -1,0 +1,324 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USER | LOGIN</title>
+    <link rel="stylesheet" href="{% static 'css/studentregistration.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Updated styles with 3D animations and improved colors */
+        body {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: white;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 20px;
+            border-bottom: 3px solid #17a2b8;
+        }
+
+        .navbar img {
+            width: 50px;
+            margin-right: 15px;
+        }
+
+        .navbar-title {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .navbar .navbar-buttons {
+            display: flex;
+            margin-left: auto;
+            gap: 20px;
+        }
+
+        .navbar .button-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+            font-weight: bold;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .register-button {
+            background: linear-gradient(135deg, #28a745, #218838);
+        }
+
+        .login-button {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+        }
+
+        .admin-login-button {
+            background: linear-gradient(135deg, #ffc107, #e0a800);
+            color: black;
+        }
+
+        .button-link:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .button-link i {
+            margin-right: 8px;
+        }
+
+        .container {
+            text-align: center;
+            padding: 50px 20px;
+            flex-grow: 1;
+        }
+
+        .container h2 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .info-section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: left;
+            max-width: 800px;
+            margin: 30px auto 0;
+        }
+
+        .info-section h3 {
+            color: #ffd700;
+        }
+
+        .info-section p {
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-top: 1px solid #ccc;
+            margin-top: auto;
+        }
+
+        .highlighted-email {
+            color: #007bff;
+            font-weight: bold;
+            margin-left: auto;
+        }
+
+        .message-container {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .message-container.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message-container.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .message-container.info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .message-container.warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f1f1f1;
+            border-top: 1px solid #ccc;
+            margin-top: auto;
+        }
+
+        /* Updated styles for login form */
+        .login-form {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            border: none;
+            border-radius: 15px;
+            background: linear-gradient(145deg, #ffffff, #f9f9f9);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), -5px -5px 15px rgba(255, 255, 255, 0.7);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .login-form h3 {
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .login-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .login-form .input-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 12px 20px;
+            padding-left: 45px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background: #f9f9f9;
+            font-size: 18px;
+            box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.1), inset -4px -4px 8px rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+
+        .login-form .input-container i {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            color: #007bff;
+            font-size: 18px;
+        }
+
+        .login-form input:focus {
+            outline: none;
+            border: 1px solid #007bff;
+            box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.5);
+        }
+
+        .login-form button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(145deg, #007bff, #0056b3);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        .login-form button:hover {
+            background: linear-gradient(145deg, #0056b3, #004494);
+            box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3), -6px -6px 12px rgba(255, 255, 255, 0.3);
+        }
+
+        .login-form .register-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .login-form .register-link a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .login-form .register-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <img src="{% static 'img/7408226.png' %}" alt="Smart Bus Pass" class="navbar-icon">
+        <h2 class="navbar-title"><a href="#">HATE SPEECH RECOGNITION</a></h2>
+        <div class="navbar-buttons">
+            <a href="{% url 'basefunction' %}" class="button-link register-button">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+            <a href="{% url 'AdminLogin' %}" class="button-link admin-login-button">
+                <i class="fas fa-sign-out-alt"></i> Admin login
+            </a>
+        </div>
+    </div>
+
+    <!-- Messages -->
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="message-container {{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Login Form -->
+    <div class="login-form">
+        <h3>USER LOGIN</h3>
+        <form action="{% url 'userlogincheck' %}" method="POST">
+            {% csrf_token %}
+            <div class="input-container">
+                <i class="fas fa-user"></i>
+                <input type="email" id="username" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="input-container">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+
+            <button type="submit">Login</button>
+
+            <div class="register-link" style="color: #e0a800;">
+                Don't have an account? <a href="{% url 'registercheck' %}">Click here to register</a>
+            </div>
+        </form>
+    </div>
+
+    <footer class="footer">
+        <span>&copy; HATE SPEECH RECOGNITION. All rights reserved.</span>
+    </footer>
+</body>
+
+</html>

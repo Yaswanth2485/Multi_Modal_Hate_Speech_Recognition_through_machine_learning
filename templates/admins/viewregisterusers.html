@@ -1,0 +1,669 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADMIN | HOME</title>
+  <link rel="stylesheet" href="{% static 'css/studentregistration.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* Updated styles with 3D animations and improved colors */
+    body {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      color: white;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      /* This ensures space between left (logo and title) and right (buttons) */
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px 20px;
+      border-bottom: 3px solid #17a2b8;
+    }
+
+    .navbar img {
+      width: 50px;
+      margin-right: 15px;
+    }
+
+    .navbar-title {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: white;
+    }
+
+    .navbar .navbar-buttons {
+      display: flex;
+      margin-left: auto;
+      gap: 20px;
+    }
+
+    .navbar .button-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 10px;
+      transition: all 0.3s ease-in-out;
+      font-weight: bold;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .register-button {
+      background: linear-gradient(135deg, #28a745, #218838);
+    }
+
+    .login-button {
+      background: linear-gradient(135deg, #007bff, #0056b3);
+    }
+
+    .admin-login-button {
+      background: linear-gradient(135deg, #ffc107, #e0a800);
+      color: black;
+    }
+
+    .button-link:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .button-link i {
+      margin-right: 8px;
+    }
+
+    .container {
+      text-align: center;
+      padding: 50px 20px;
+      flex-grow: 1;
+    }
+
+    .container h2 {
+      font-size: 28px;
+      font-weight: bold;
+      color: #ffd700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      margin-bottom: 20px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 40px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    /* General Button Style */
+    .button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #333;
+      background-color: #f8f9fa;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 20px 18px;
+      /* Reduced padding to decrease button size */
+      width: 120px;
+      /* Reduced width */
+      height: 120px;
+      /* Reduced height */
+      box-sizing: border-box;
+      margin: 10px;
+      transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .button:hover {
+      background-color: #e2e6ea;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      transform: scale(1.05);
+    }
+
+    .button i {
+      font-size: 25px;
+      /* Reduced font size */
+      margin-bottom: 8px;
+    }
+
+    .button img {
+      width: 30px;
+      /* Reduced image size */
+      height: 30px;
+      /* Reduced image size */
+      margin-bottom: 8px;
+    }
+
+    /* Profile Button Style */
+    .profile-button {
+      background-color: #ffc107;
+      color: white;
+    }
+
+    .profile-button:hover {
+      background-color: #e0a800;
+      transform: scale(1.1);
+    }
+
+    /* Registered Users Button Style */
+    .registered-users {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .registered-users:hover {
+      background-color: #0056b3;
+      transform: scale(1.1);
+    }
+
+    /* Container for buttons */
+    .button-container {
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 40px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+  
+
+    /* Specific button styles */
+    .home-button {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .home-button:hover {
+      background-color: #218838;
+      transform: scale(1.1);
+    }
+
+    .registered-users {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .registered-users:hover {
+      background-color: #0056b3;
+      transform: scale(1.1);
+    }
+
+    .add-routes {
+      background-color: #fd7e14;
+      color: white;
+    }
+
+    .add-routes:hover {
+      background-color: #e67e00;
+      transform: scale(1.1);
+    }
+
+    .bus-pass {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .bus-pass:hover {
+      background-color: #c82333;
+      transform: scale(1.1);
+    }
+
+    .highlighted-email {
+      color: #007bff;
+      font-weight: bold;
+    }
+
+    .time-display {
+      font-size: 18px;
+      font-weight: bold;
+      color: #007bff;
+      margin-left: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.8);
+      border-top: 1px solid #ccc;
+      margin-top: auto;
+    }
+
+    /* Styling for the search bar */
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .search-bar form {
+      display: flex;
+      border: 2px solid #17a2b8;
+      border-radius: 20px;
+      padding: 5px;
+      background-color: #f8f9fa;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-bar input {
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 20px;
+      width: 250px;
+      margin-right: 10px;
+      outline: none;
+      transition: all 0.3s;
+    }
+
+    .search-bar input:focus {
+      border-color: #17a2b8;
+      box-shadow: 0 0 10px rgba(23, 162, 184, 0.5);
+    }
+
+    .search-bar button {
+      padding: 10px 20px;
+      background-color: #17a2b8;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .search-bar button:hover {
+      background-color: #138496;
+    }
+
+    /* Styling for the table */
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    table th,
+    table td {
+      padding: 12px 15px;
+      text-align: left;
+      border: 1px solid #ccc;
+    }
+
+    table th {
+      background-color: #2a5298;
+      color: white;
+      font-weight: bold;
+    }
+
+    table tr:nth-child(even) {
+      background-color: #bdb76b;
+      /* Light Yellow */
+    }
+
+    table tr:hover {
+      background-color: #17a2b8;
+      /* Light Gray */
+    }
+
+    .status-waiting {
+      color: #ffc107;
+    }
+
+    .status-activated {
+      color: #28a745;
+    }
+
+    .status-blocked {
+      color: #dc3545;
+    }
+
+    /* Add custom styles for pagination */
+    .pagination {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .pagination a {
+      padding: 8px 16px;
+      margin: 0 5px;
+      border-radius: 5px;
+      background-color: #17a2b8;
+      color: white;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .pagination a:hover {
+      background-color: #138496;
+    }
+
+    .pagination a.disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .pagination a.active {
+      background-color: #0056b3;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* Activate Button Styling */
+    .btn-activate {
+      background-color: #28a745;
+      color: white;
+      border: 2px solid #218838;
+    }
+
+    .btn-activate:hover {
+      background-color: #218838;
+      border-color: #1e7e34;
+      transform: scale(1.05);
+    }
+
+    /* Block Button Styling */
+    .btn-block {
+      background-color: #dc3545;
+      color: white;
+      border: 2px solid #c82333;
+    }
+
+    .btn-block:hover {
+      background-color: #c82333;
+      border-color: #bd2130;
+      transform: scale(1.05);
+    }
+
+    /* Unblock Button Styling */
+    .btn-unblock {
+      background-color: #ffc107;
+      color: white;
+      border: 2px solid #e0a800;
+    }
+
+    .btn-unblock:hover {
+      background-color: #e0a800;
+      border-color: #d39e00;
+      transform: scale(1.05);
+    }
+
+    /* Active Button State - Applied when a button is clicked or active */
+    .btn:active {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .status-waiting {
+      color: #ffc107;
+      /* Yellow for waiting */
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .status-activated {
+      color: #28a745;
+      /* Green for activated */
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .status-blocked {
+      color: #dc3545;
+      /* Red for blocked */
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    /* Hover effect on status */
+    .status-waiting:hover {
+      background-color: #ffe066;
+      cursor: pointer;
+    }
+
+    .status-activated:hover {
+      background-color: #66d96f;
+      cursor: pointer;
+    }
+
+    .status-blocked:hover {
+      background-color: #f8d7da;
+      cursor: pointer;
+    }
+
+    /* Focus effect (when status is clicked or focused) */
+    .status-waiting:focus {
+      outline: 2px solid #ffc107;
+    }
+
+    .status-activated:focus {
+      outline: 2px solid #28a745;
+    }
+
+    .status-blocked:focus {
+      outline: 2px solid #dc3545;
+    }
+
+    /* Styles for alert messages */
+    .messages {
+      margin-top: 20px;
+    }
+
+    .alert {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      color: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .alert .close-btn {
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .alert .close-btn:hover {
+      color: #d9534f;
+      /* Red color on hover */
+    }
+
+    /* Specific message types */
+    .alert-success {
+      background-color: #28a745;
+      /* Green background for success */
+      border-left: 5px solid #218838;
+    }
+
+    .alert-error {
+      background-color: #dc3545;
+      /* Red background for error */
+      border-left: 5px solid #c82333;
+    }
+
+    .alert-info {
+      background-color: #17a2b8;
+      /* Blue background for info */
+      border-left: 5px solid #138496;
+    }
+
+    .alert-warning {
+      background-color: #ffc107;
+      /* Yellow background for warning */
+      border-left: 5px solid #e0a800;
+    }
+
+    /* Hover effect on alert */
+    .alert:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar">
+    <img src="{% static 'img/9895497.png' %}" alt="Smart Bus Pass" class="navbar-icon">
+    <h2 class="navbar-title"><a href="#">HATE SPEECH RECOGNITION</a></h2>
+
+    <div class="welcome-message">
+      {% if user_name %}
+      <span class="highlighted-email">Welcome, {{ user_name }}!</span><br>
+      {% else %}
+      <span>Please log in</span>
+      {% endif %}
+    </div>
+    <div id="time" class="time-display"></div>
+
+    <div class="navbar-buttons">
+      <a href="{% url 'AdminHome' %}" class="button-link home-button">
+        <i class="fas fa-home"></i> HOME
+      </a>
+      <a href="{% url 'adminlogout' %}" class="button-link logout">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+    </div>
+  </div>
+
+
+  <div class="container mt-4">
+    <!-- Messages -->
+    <div class="messages">
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+        <span>{{ message }}</span>
+        <button class="close-btn" onclick="this.parentElement.style.display='none';">&times;</button>
+      </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+
+    <div class="container">
+      <h2>Welcome To Admin Home Page</h2>
+      <div class="button-container">
+        <div class="search-bar">
+          <!-- Retain the search query in the input field -->
+          <form method="GET" action="{% url 'RegisterUsersView' %}">
+            <input type="text" name="search" placeholder="Search by name, email, or mobile" value="{{ search_query }}">
+            <button type="submit">Search</button>
+          </form>
+        </div>
+
+
+        <table>
+          <thead>
+            <tr>
+              <th>S.NO</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Mobile</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in data %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ i.name }}</td>
+              <td>{{ i.email }}</td>
+              <td>{{ i.mobile }}</td>
+              <td>
+                {% if i.status == 'waiting' %}
+                <span class="status-waiting">Waiting</span>
+                {% elif i.status == 'activated' %}
+                <span class="status-activated">Activated</span>
+                {% elif i.status == 'blocked' %}
+                <span class="status-blocked">Blocked</span>
+                {% endif %}
+              </td>
+              <td>
+                {% if i.status == 'waiting' %}
+                <a href="{% url 'activate_user' %}?uid={{ i.id }}" class="btn btn-activate">Activate</a>
+                {% elif i.status == 'activated' %}
+                <a href="{% url 'BlockUser' %}?uid={{ i.id }}" class="btn btn-block">Block</a>
+                {% elif i.status == 'blocked' %}
+                <a href="{% url 'UnblockUser' %}?uid={{ i.id }}" class="btn btn-unblock">Unblock</a>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <div class="pagination">
+          {% if data.has_previous %}
+          <a href="?page={{ data.previous_page_number }}">&laquo; Prev</a>
+          {% else %}
+          <a href="#" class="disabled">&laquo; Prev</a>
+          {% endif %}
+
+          {% for num in data.paginator.page_range %}
+          <a href="?page={{ num }}" class="{% if num == data.number %}active{% endif %}">{{ num }}</a>
+          {% endfor %}
+
+          {% if data.has_next %}
+          <a href="?page={{ data.next_page_number }}">Next &raquo;</a>
+          {% else %}
+          <a href="#" class="disabled">Next &raquo;</a>
+          {% endif %}
+        </div>
+      </div>
+
+
+    </div>
+
+    <footer class="footer">
+      <span>&copy; HATE SPEECH RECOGNITION. All rights reserved.</span>
+    </footer>
+
+    <script>
+      function updateIST() {
+        var now = new Date();
+        var options = {
+          timeZone: 'Asia/Kolkata',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false
+        };
+        var istTime = new Intl.DateTimeFormat('en-GB', options).format(now);
+        document.getElementById('time').textContent = istTime + ' [IST]';
+      }
+      setInterval(updateIST, 1000);
+      updateIST();
+    </script>
+</body>
+
+</html>

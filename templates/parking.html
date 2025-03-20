@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPEN PARKING</title>
+    <style>
+        .container {
+            margin-top: 30px;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h3 {
+            margin-top: 30px;
+            font-size: 1.5em;
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+
+        .slot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .slot {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .slot:hover {
+            transform: translateY(-8px);
+        }
+
+        .slot-number {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .status {
+            font-size: 14px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .available {
+            color: #28a745;
+        }
+
+        .occupied {
+            color: #dc3545;
+        }
+
+        .allocated {
+            background-color: #ffc107;
+            color: #fff;
+        }
+
+        .book-button, .park-button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .book-button {
+            background-color: #007bff;
+        }
+
+        .park-button {
+            background-color: #28a745;
+        }
+
+        .book-button:hover {
+            background-color: #0056b3;
+        }
+
+        .park-button:hover {
+            background-color: #1e7e34;
+        }
+
+        .disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Parking Slot Availability</h2>
+
+        <!-- 2-Wheeler Slots -->
+        <h3>2-Wheeler Slots</h3>
+        <div class="slot-grid">
+            {% for slot in two_wheeler_slots %}
+                <div class="slot {% if user_allocated_slot and slot.id == user_allocated_slot.id %}allocated{% endif %}">
+                    <p class="slot-number">{{ slot.slot_number }}</p>
+                    <p class="status {% if slot.is_available %}available{% else %}occupied{% endif %}">
+                        {% if user_allocated_slot and slot.id == user_allocated_slot.id %}
+                            Allocated to You
+                        {% elif slot.is_available %}
+                            Available
+                        {% else %}
+                            Occupied
+                        {% endif %}
+                    </p>
+
+                    {% if user_allocated_slot and slot.id == user_allocated_slot.id %}
+                        <form method="POST" action="{% url 'checkout' user_allocated_slot.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="park-button">Checkout</button>
+                        </form>
+                    {% elif slot.is_available %}
+                        <form method="POST" action="#book-slot">
+                            {% csrf_token %}
+                            <input type="hidden" name="slot_id" value="{{ slot.id }}">
+                            <button type="submit" class="book-button">Book Now</button>
+                        </form>
+                    {% else %}
+                        <button class="book-button disabled" disabled>Occupied</button>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- 4-Wheeler Slots -->
+        <h3>4-Wheeler Slots</h3>
+        <div class="slot-grid">
+            {% for slot in four_wheeler_slots %}
+                <div class="slot {% if user_allocated_slot and slot.id == user_allocated_slot.id %}allocated{% endif %}">
+                    <p class="slot-number">{{ slot.slot_number }}</p>
+                    <p class="status {% if slot.is_available %}available{% else %}occupied{% endif %}">
+                        {% if user_allocated_slot and slot.id == user_allocated_slot.id %}
+                            Allocated to You
+                        {% elif slot.is_available %}
+                            Available
+                        {% else %}
+                            Occupied
+                        {% endif %}
+                    </p>
+
+                    {% if user_allocated_slot and slot.id == user_allocated_slot.id %}
+                        <form method="POST" action="{% url 'checkout' user_allocated_slot.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="park-button">Checkout</button>
+                        </form>
+                    {% elif slot.is_available %}
+                        <form method="POST" action="#book-slot">
+                            {% csrf_token %}
+                            <input type="hidden" name="slot_id" value="{{ slot.id }}">
+                            <button type="submit" class="book-button">Book Now</button>
+                        </form>
+                    {% else %}
+                        <button class="book-button disabled" disabled>Occupied</button>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

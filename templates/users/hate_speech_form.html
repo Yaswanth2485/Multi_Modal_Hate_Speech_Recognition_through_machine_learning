@@ -1,0 +1,526 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hate Speech Recognition: Real-time training and prediction system">
+    <meta name="author" content="Your Name">
+    <meta name="keywords" content="Hate Speech, Machine Learning, SVM, Naive Bayes">
+    <title>USER | HOME</title>
+    <link rel="stylesheet" href="{% static 'css/studentregistration.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Updated styles with 3D animations and improved colors */
+        body {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: white;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 20px;
+            border-bottom: 3px solid #17a2b8;
+        }
+
+        .navbar img {
+            width: 50px;
+            margin-right: 15px;
+        }
+
+        .navbar-title {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .navbar .navbar-buttons {
+            display: flex;
+            margin-left: auto;
+            /* Align logout button to the right */
+            gap: 20px;
+        }
+
+        .navbar .button-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+            font-weight: bold;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .register-button {
+            background: linear-gradient(135deg, #28a745, #218838);
+        }
+
+        .login-button {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+        }
+
+        .admin-login-button {
+            background: linear-gradient(135deg, #ffc107, #e0a800);
+            color: black;
+        }
+
+        .button-link:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .button-link i {
+            margin-right: 8px;
+        }
+
+        .container h2 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #fff;
+            border: 2px solid #6c757d;
+            border-radius: 10px;
+            padding: 25px 20px;
+            width: 150px;
+            height: 150px;
+            box-sizing: border-box;
+            margin: 10px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .button:hover {
+            background-color: #5a6268;
+            border-color: #495057;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .button i {
+            font-size: 35px;
+            margin-bottom: 15px;
+            transition: color 0.3s;
+        }
+
+        .button:hover i {
+            color: #fff;
+        }
+
+        .button img {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+
+        .button:hover img {
+            transform: scale(1.2);
+        }
+
+        /* New color changes for buttons */
+        .home-btn {
+            background-color: #4CAF50;
+            /* Green */
+            border-color: #4CAF50;
+        }
+
+        .home-btn:hover {
+            background-color: #45a049;
+            border-color: #45a049;
+            transform: translateY(-5px);
+        }
+
+        .profile-btn {
+            background-color: #2196F3;
+            /* Blue */
+            border-color: #2196F3;
+        }
+
+        .profile-btn:hover {
+            background-color: #1e88e5;
+            border-color: #1e88e5;
+            transform: translateY(-5px);
+        }
+
+        .training-btn {
+            background-color: #FF9800;
+            /* Orange */
+            border-color: #FF9800;
+        }
+
+        .training-btn:hover {
+            background-color: #e68900;
+            border-color: #e68900;
+            transform: translateY(-5px);
+        }
+
+        .matrices-btn {
+            background-color: #9C27B0;
+            /* Purple */
+            border-color: #9C27B0;
+        }
+
+        .matrices-btn:hover {
+            background-color: #8e24aa;
+            border-color: #8e24aa;
+            transform: translateY(-5px);
+        }
+
+        .forecast-btn {
+            background-color: #FF5722;
+            /* Red */
+            border-color: #FF5722;
+        }
+
+        .forecast-btn:hover {
+            background-color: #e64a19;
+            border-color: #e64a19;
+            transform: translateY(-5px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-top: 1px solid #ccc;
+            margin-top: auto;
+        }
+
+        .time-display {
+            margin-left: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+
+        .page-content h1 {
+            color: #ffd700;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .table {
+            margin-top: 30px;
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .table th,
+        .table td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .table thead {
+            background-color: #17a2b8;
+            color: white;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #343a40;
+        }
+
+        .table tbody tr:nth-child(odd) {
+            background-color: #495057;
+        }
+
+        .table tbody tr:hover {
+            background-color: #6c757d;
+            cursor: pointer;
+        }
+
+        .table img {
+            max-width: 100px;
+            margin: 0 auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .table img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Container Styling */
+        .container {
+            padding: 40px 20px;
+            /* Semi-transparent dark background */
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+        }
+
+        /* Card Header Styling */
+        .card-header {
+            background-color: transparent;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .card-header h3 {
+            font-size: 28px;
+            font-weight: bold;
+            color: red;
+        }
+
+        /* Card Body Styling */
+        .card-body {
+            padding: 20px;
+        }
+
+        /* Form Group Styling */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Button Styling */
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            padding: 10px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+        .container {
+            padding: 40px 20px;
+            /* Semi-transparent dark background */
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+        }
+
+        /* Card Header Styling */
+        .card-header {
+            background-color: transparent;
+            border-bottom: 2px solid #ddd;
+            padding: 20px;
+        }
+
+        .card-header h3 {
+            font-size: 30px;
+            font-weight: bold;
+            color: #ff6347;
+            /* Tomato color */
+            margin-bottom: 0;
+        }
+
+        /* Card Body Styling */
+        .card-body {
+            padding: 20px;
+        }
+
+        /* Form Group Styling */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        /* Input Fields Styling */
+        .input-container {
+            margin-bottom: 20px;
+        }
+
+        .input-container input,
+        .input-container textarea {
+            width: 100%;
+            padding: 12px 20px;
+            margin-bottom: 15px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-container input:focus,
+        .input-container textarea:focus {
+            border-color: #ff6347;
+            outline: none;
+        }
+
+        /* Button Styling */
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            padding: 10px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+        /* Text Centering */
+        .text-center {
+            text-align: center;
+        }
+
+        /* Remove any unwanted margins and padding */
+        .card-body .form-group {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Add custom styling for the Confusion Matrix column */
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <img src="{% static 'img/14040247.png' %}" alt="Smart Bus Pass" class="navbar-icon">
+        <h2 class="navbar-title"><a href="#">HATE SPEECH RECOGNITION</a></h2>
+
+        <div class="welcome-message">
+            {% if request.session.name %}
+            <span class="highlighted-email">Welcome, {{ request.session.name }}!</span><br>
+            <span>{{ request.session.email }}</span>
+            {% else %}
+            <span>Please log in</span>
+            {% endif %}
+        </div>
+
+        <!-- Display the current time here -->
+        <div id="time" class="time-display"></div>
+
+        <div class="navbar-buttons">
+            <a href="{% url 'adminlogout' %}" class="button-link logout">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </div>
+    </div>
+
+    <div class="container mt-4" style="text-align: center;">
+        <h2>Welcome, {{ request.session.name }}!</h2>
+        <div class="button-container">
+            <a href="{%url 'userhome'%}"" class="button home-btn">
+                <img src="{% static 'img/7895245.png' %}" alt="Home">
+                HOME
+            </a>
+            <a href="{% url 'userprofile' %}" class="button profile-btn">
+                <img src="{% static 'img/798985.png' %}" alt="Profile">
+                Profile
+            </a>
+            <a href="{%url 'Task1'%}" class="button training-btn">
+                <img src="{% static 'img/365984.png' %}" alt="Training">
+                Training
+            </a>
+            <a href="{%url 'matrix'%}" class="button matrices-btn">
+                <img src="{% static 'img/1011528.png' %}" alt="Matrices">
+                Matrices
+            </a>
+            <a href="{%url 'prediction'%}" class="button forecast-btn">
+                <img src="{% static 'img/25478955.png' %}" alt="Forecast">
+                Forecast
+            </a>
+
+            <a href="{%url 'hate_speech_predictor_audio'%}" class="button forecast-btn">
+                <img src="{% static 'img/25478955.png' %}" alt="Forecast">
+                Audio
+            </a>
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                    <div class="card-header text-center">
+                        <h3 class="font-weight-bold my-4" style="color: #ffd700;">Hate Speech Recognizer</h3>
+                        <!-- Updated color -->
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="form-group text-center">
+                                <!-- Styling the form fields -->
+                                <div class="input-container" aria-placeholder="enter text for predictions">
+                                    {{ form.as_p }}
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg px-5 py-3">Forecast</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+        <span>&copy;HATE SPEECH RECOGNITION. All rights reserved.</span>
+    </footer>
+
+    <script>
+        function updateIST() {
+            var now = new Date();
+
+            var options = {
+                timeZone: 'Asia/Kolkata',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            };
+
+            var istTime = new Intl.DateTimeFormat('en-GB', options).format(now);
+            document.getElementById('time').textContent = istTime + ' [IST]';
+        }
+
+        setInterval(updateIST, 1000);
+        updateIST();
+    </script>
+</body>
+
+</html>
