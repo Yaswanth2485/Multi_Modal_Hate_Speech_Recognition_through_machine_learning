@@ -1,0 +1,418 @@
+
+
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.navbar img {
+    width: 50px;
+    margin-right: 20px;
+}
+
+.navbar-title {
+    font-size: 24px;
+    margin: 0;
+}
+
+.navbar .home,
+.navbar .logout {
+    margin-left: auto;
+    text-decoration: none;
+    color: #007bff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.navbar .home {
+    background-color: #28a745;
+    display: flex;
+    align-items: center;
+}
+
+.navbar .home:hover {
+    background-color: #218838;
+}
+
+.navbar .logout {
+    display: flex;
+    align-items: center;
+    background-color: #e2e6ea;
+}
+
+.navbar .logout:hover {
+    background-color: #d6d8db;
+}
+
+.navbar .home i,
+.navbar .logout i {
+    margin-right: 8px;
+}
+
+.welcome-message {
+    margin-left: 20px;
+    padding-left: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* General Button Style */
+.button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 30px 25px;
+    width: 150px;
+    height: 150px;
+    box-sizing: border-box;
+    margin: 10px;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+    background-color: #e2e6ea;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+.button i {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.button img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 12px;
+}
+
+.navbar .home i,
+.navbar .logout i {
+    margin-right: 8px;
+}
+
+.button-container a {
+    flex: 1 0 200px;
+    /* Make buttons responsive */
+    display: flex;
+    justify-content: center;
+}
+
+/* Specific button styles */
+.home-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.home-button:hover {
+    background-color: #218838;
+    transform: scale(1.1);
+}
+
+.registered-users {
+    background-color: #007bff;
+    color: white;
+}
+
+.registered-users:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+.add-routes {
+    background-color: #fd7e14;
+    color: white;
+}
+
+.add-routes:hover {
+    background-color: #e67e00;
+    transform: scale(1.1);
+}
+
+.bus-pass {
+    background-color: #dc3545;
+    color: white;
+}
+
+.bus-pass:hover {
+    background-color: #c82333;
+    transform: scale(1.1);
+}
+
+.highlighted-email {
+    color: #007bff;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.table-container {
+    margin: 20px auto;
+    width: 98%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.search-bar {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-bar button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+    background-color: #0056b3;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.pagination a {
+    margin: 0 5px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #007bff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.pagination a:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.pagination .active {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #333;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+/* Button Styling */
+.btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-activate {
+    background-color: blue;
+}
+
+.btn-block {
+    background-color: orange;
+}
+
+.btn-unblock {
+    background-color: green;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* Status Text Styling */
+.status-waiting {
+    color: gray;
+    font-weight: bold;
+}
+
+.status-activated {
+    color: green;
+    font-weight: bold;
+}
+
+.status-blocked {
+    color: red;
+    font-weight: bold;
+}
+
+
+/* Status Highlight Colors */
+.status-waiting {
+    background-color: #f5f5f5;
+    /* Light Gray */
+    color: gray;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.status-activated {
+    background-color: #d4edda;
+    
+    color: green;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.status-blocked {
+    background-color: #f8d7da;
+    /* Light Red */
+    color: red;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* Button Styling */
+.btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-activate {
+    background-color: blue;
+}
+
+.btn-block {
+    background-color: orange;
+}
+
+.btn-unblock {
+    background-color: green;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.messages {
+    margin: 20px 0;
+}
+
+.alert {
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error,
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+.alert-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+.alert .close-btn {
+    float: right;
+    font-size: 1.2em;
+    line-height: 1;
+    cursor: pointer;
+    color: inherit;
+    background: none;
+    border: none;
+}
